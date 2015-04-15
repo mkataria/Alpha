@@ -1,2 +1,0 @@
-DB readme file
-It will contain DB instructions

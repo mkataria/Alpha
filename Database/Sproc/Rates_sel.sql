@@ -1,0 +1,2 @@
+
+CREATE PROC [dbo].[Rates_sel]	@Id intASSET NOCOUNT ONSELECT [Id], 	[Currency1], 	[Currency2], 	[Price], 	[AsOn], 	[IsActive], 	[Source], 	[DateCreated]FROM RatesWHERE [Id] = @IdSET NOCOUNT OFF

@@ -1,0 +1,1 @@
+CREATE PROC [dbo].[Rates_lst]ASSET NOCOUNT ONSELECT [Id], 	[Currency1], 	[Currency2], 	[Price], 	[AsOn], 	[IsActive], 	[Source], 	[DateCreated]FROM RatesSET NOCOUNT OFF
