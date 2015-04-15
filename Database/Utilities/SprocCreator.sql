@@ -73,6 +73,8 @@ SET @IsSoftDelete = 1
 DECLARE @DeleteColName varchar(10)
 SET @DeleteColName = 'IsActive'
 
+DECLARE @ProcName varchar(30)
+
 -- For our '_lst' and '_sel' procedures do we want to 
 -- do SELECT * or SELECT [ColumnName,]...
 -- Assign a value of either 1 or 0
@@ -227,9 +229,13 @@ WHILE @@FETCH_STATUS = 0 BEGIN
 			-- ----------------------------------------------------
 			-- now start building the procedures for the next table
 			-- ----------------------------------------------------
-			
-			-- _lst
-			SET @LIST = 'CREATE PROC [dbo].[' + @SprocPrifix + @ObjectName + '_lst]' + Char(13)
+			SET @ProcName = '[dbo].[' + @SprocPrifix + @ObjectName + '_lst]'
+			-- _lst 
+			SET @LIST = 'IF EXISTS (SELECT 1 FROM sys.objects WHERE name = ' + @ProcName + ') BEGIN' + Char(13)
+			SET @LIST = @LIST +  'DROP PROC Rates_del' + Char(13)
+			SET @LIST = @LIST +  'END' + Char(13)
+			SET @LIST = @LIST +  'Go' + Char(13)
+			SET @LIST = @LIST +  'CREATE PROC ' + @ProcName + Char(13)
 			SET @LIST = @LIST + 'AS' + Char(13)
 			SET @LIST = @LIST + 'SET NOCOUNT ON' + Char(13)
 			IF @UseSelectWildcard = 1 BEGIN
