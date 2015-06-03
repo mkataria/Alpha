@@ -18,6 +18,8 @@ CREATE TABLE [dbo].[Vendor](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[VendorName] [varchar](30) NOT NULL,
 	[VendorCode] [varchar](5) NOT NULL,
+	[Url] [varchar](MAX) NOT NULL,
+	[Reader] [varchar] (50) NOT NULL,
 	[IsActive] [bit] NOT NULL,
 	[DateCreated] [datetime] NOT NULL,
  CONSTRAINT [PK_Vendor] PRIMARY KEY CLUSTERED 
